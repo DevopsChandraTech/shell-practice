@@ -1,14 +1,15 @@
 #!/bin/bash
 
-# PERSON1=$1
-# PERSON2=$2
+DATE=$(date +%s)
 
-# echo "$PERSON1:: HELLO $PERSON2"
-# echo "$PERSON2:: HELLO $PERSON1"
+START_TIME=$(date +%s)
 
-echo "please enter you pin number"
+sleep 10
 
-read -s PINNUMBER
+END_TIME=$(date +%s)
 
-echo "your pin is $PINNUMBER"
+TOTAL_TIME=$(($START_TIME - $END_TIME))
+
+echo "the script executed in: $TOTAL_TIME Secs." 
+
 

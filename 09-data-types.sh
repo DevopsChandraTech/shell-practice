@@ -10,4 +10,4 @@ echo "sum of the numbers is: ${SUM}"
 
 FAMILY=("Amma","Chandra","Anu","Gnapika","Hansith")
 
-echo "all members of the family is : $@"
+echo "all members of the family is : ${FAMILY[@]}"

@@ -8,7 +8,7 @@
 
 echo "please enter you pin number"
 
-read PINNUMBER
+read -s PINNUMBER
 
 echo "your pin is $PINNUMBER"
 

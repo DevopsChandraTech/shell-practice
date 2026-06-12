@@ -12,5 +12,5 @@ FAMILY=("Amma","Chandra","Anu","Gnapika","Hansith")
 
 echo "all members of the family is : ${FAMILY[@]}"
 echo "head of the family is: ${FAMILY[0]}"
-echo "eldest of the family is: ${FMILY[4]}"
+echo "eldest of the family is: ${FAMILY[4]}"
 

@@ -12,8 +12,8 @@ echo "who is running the script : $USER"
 
 echo "home directory of the script: $HOME"
 
-echo "PID of the Script : $!"
+echo "PID of the Script : $$"
 
 sleep 50 & # sleep 50 secs in baground
 
-echo "PID of the last command: $$"
+echo "PID of the last command: $!"

@@ -13,5 +13,5 @@ if [ $? -ne 0 ]; then
     echo "Error:: Please check once the command."
     exit 1
 else
-    echo "mysql installing successfully."
+    echo "MySql Installed Successfully."
 fi

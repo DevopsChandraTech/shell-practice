@@ -1,4 +1,5 @@
 #!/bin/bash
+#dynamic variables
 
 DATE=$(date +%s)
 

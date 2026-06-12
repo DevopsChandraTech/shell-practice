@@ -8,6 +8,9 @@ NAME=Chandra
 SUM=$(($NUMBER1 + $NUMBER2 + $NAME))
 echo "sum of the numbers is: ${SUM}"
 
+# index starts with 0
+# max index is 4 
+
 FAMILY=("Amma" "Chandra" "Anu" "Gnapika" "Hansith")
 
 echo "all members of the family is : ${FAMILY[@]}"

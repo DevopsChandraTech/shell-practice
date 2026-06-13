@@ -25,14 +25,14 @@ VALIDATE(){
         echo -e "Failure:: $R $2 $N Command Not Found."
         exit 1
     else
-        echo "$2 Installing $G Success $N."
+        echo -e "$2 Installing $G Success $N."
     fi
 }
 
 #mysql installation
 dnf list installed mysql &>> $FILE_NAME # check the list of installed packages available
 if [ $? -ne 0 ]; then
-    dnf install mysql -y &>> $FILE_NAME
+    dnf install mysql -y &>> $FILE_NAME | tee -a $FILE_NAME
     VALIDATE $? MySql
 else 
     echo -e "MySql already installed $Y Skipping...$N"

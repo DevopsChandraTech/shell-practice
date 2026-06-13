@@ -15,6 +15,7 @@ fi
 VALIDATE(){
     if [ $1 -ne 0 ]; then
         echo -e "Failure:: $R $2 $N Command Not Found."
+        exit 1
     else
         echo "Success:: Proceed with installation."
     fi
@@ -26,4 +27,5 @@ if [ $? -ne 0 ]; then
     VALIDATE $? MySql
 else 
     echo -e "MySql already installed $Y Skipping...$N"
+fi
 

@@ -12,7 +12,7 @@ VALIDATE(){
         echo "Error:: Command Not found Plese check once the command."
         exit 1
     else    
-        echo -e "\e[32m $2 Installed Successfully."
+        echo -e "\e[32m$2 Installed Successfully.\e[0m"
     fi 
 }
 

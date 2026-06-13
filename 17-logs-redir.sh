@@ -26,7 +26,7 @@ VALIDATE(){
         echo -e "Failure:: $R $2 $N Command Not Found." | tee -a $FILE_NAME
         exit 1
     else
-        echo -e "$2 Installing $G Success $N." | tee -a $FILE_NAME
+        echo -e "$2 Installing $G Success. $N" | tee -a $FILE_NAME
     fi
 }
 

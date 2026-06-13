@@ -9,10 +9,10 @@ fi
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
-        echo "Error:: MySql Not installed."
+        echo "Error:: Installing $2 Failure."
         exit 1
     else    
-        echo "$2 Already installed...! Skipping."
+        echo "Installing $2 Success."
     fi
 }
 

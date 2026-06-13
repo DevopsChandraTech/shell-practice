@@ -5,6 +5,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+START_TIME=$(date +%s)
 
 USERID=$(id -u)
 
@@ -28,6 +29,8 @@ VALIDATE(){
         echo -e "$2 Installing $G Success $N." | tee -a $FILE_NAME
     fi
 }
+
+echo "Script Execution Started at $(date)"
 
 #mysql installation
 dnf list installed mysql &>> $FILE_NAME # check the list of installed packages available
@@ -64,5 +67,9 @@ if [ $? -ne 0 ]; then
 else 
     echo -e "Unzip already installed $Y Skipping...$N" | tee -a $FILE_NAME
 fi
+
+END_TIME=$(date +%s)
+TOTAL_TIME=$(($END_TIME-$START_TIME))
+echo "The Script Executed in $TOTAL_TIME Secs."
 
 

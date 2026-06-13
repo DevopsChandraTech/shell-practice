@@ -14,7 +14,7 @@ if [ $USERID -ne 0 ]; then
 fi
 
 VALIDATE(){
-    if [ $1 -ne 0 ]; then
+    if [ $1 -ne 0 ]; then # $1 is first arg for $? and $2 is 2nd arg for MySql
         echo -e "Failure:: $R $2 $N Command Not Found."
         exit 1
     else
@@ -23,7 +23,7 @@ VALIDATE(){
 }
 
 #mysql installation
-dnf list installed mysql 
+dnf list installed mysql # check the list of installed packages available
 if [ $? -ne 0 ]; then
     dnf install mysql -y
     VALIDATE $? MySql

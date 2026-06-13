@@ -4,11 +4,13 @@ USERID=$(id -u)
 
 if [ $USERID -ne 0 ]; then
     echo "Error:: Run command with root user privilizes."
+    exit 1
 fi
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
         echo "Error:: MySql Not installed."
+        exit 1
     else    
         echo "$2 Already installed...! Skipping."
     fi

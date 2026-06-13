@@ -12,7 +12,7 @@ VALIDATE(){
         echo "Error:: Command Not found Plese check once the command."
         exit 1
     else    
-        echo -e "\e[32m$2\e[0m Installed Successfully." # we tell echo statement to enable after \
+        echo -e "\e[32m$2 Installed Successfully." # we tell echo statement to enable after \
         # without e generally echo statement print the inside the "" quotes.
     fi 
 }

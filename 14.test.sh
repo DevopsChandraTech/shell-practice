@@ -2,7 +2,7 @@
 
 USERID=$(id -u)
 
-if [$USERID -ne 0 ]; then #here userid = 0 that is root user other than 0 not an root user.
+if [ $USERID -ne 0 ]; then #here userid = 0 that is root user other than 0 not an root user.
     echo "Error::Plese run the command with root user privilizes."
 fi
 

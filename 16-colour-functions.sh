@@ -49,3 +49,12 @@ else
     echo -e "Python3 already installed $Y Skipping...$N"
 fi
 
+#Unzip installation
+dnf list installed unzip 
+if [ $? -ne 0 ]; then
+    dnf install unzip -y
+    VALIDATE $? Unzip
+else 
+    echo -e "Unzip already installed $Y Skipping...$N"
+fi
+

@@ -8,7 +8,7 @@ N="\e[0m"
 USERID=$(id -u)
 
 if [ $USERID -ne 0 ]; then
-    echo -e "$RError$N :: run command with root user privilizes."
+    echo -e "Error:: run command with root user privilizes."
     exit 1
 fi
 

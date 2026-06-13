@@ -18,7 +18,7 @@ VALIDATE(){
         echo -e "Failure:: $R $2 $N Command Not Found."
         exit 1
     else
-        echo "Success:: Proceed with installation."
+        echo "$2 Installed Successfully."
     fi
 }
 

@@ -38,12 +38,12 @@ VALIDATE(){
 
 for package in $@;
 do
-    dnf installed $package
+    dnf installed $package &>> $LOG_FILE
     if [ $? -ne 0 ]; then
-        dnf install $package -y
-        echo "$package Installing $G Success. $N"
+        dnf install $package -y &>> $LOG_FILE
+        echo -e "$package Installing $G Success. $N" | tee -a $LOG_FILE
     else
-        echo "$package already installed...! $Y Skipping. $N"
+        echo -e "$package already installed...! $Y Skipping. $N" | tee -a $LOG_FILE
     fi
 
 done

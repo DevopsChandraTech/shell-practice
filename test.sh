@@ -32,15 +32,18 @@ VALIDATE(){
     fi
 }
 
-dnf list installed mysql &>> $LOG_FILE
+# install mysql using loops
+# check mysql installed or not 
+# if not installed install or else install skipping
 
-if [ $? -ne 0 ]; then
-    dnf install mysql -y &>> $LOG_FILE
-    VALIDATE $? MySql
-else 
-    echo -e "MySql already installed $Y Skipping...!$N"  | tee -a $LOG_FILE
-fi
+for package in $@;
+do
+    dnf installed $package
+    if [ $? -ne 0 ]; then
+        dnf install $package -y
+        echo "$package Installing $G Success. $N"
+    else
+        echo "$package already installed...! $Y Skipping. $N"
+    fi
 
-END_TIME=$(date +%s)
-TOTAL_TIME=$(($END_TIME-$START_TIME))
-echo "Script Executed in $TOTAL_TIME Secs."
+done

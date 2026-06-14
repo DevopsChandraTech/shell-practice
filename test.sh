@@ -14,11 +14,15 @@ USERID=$(id -u) # show user id
 
 if [ $USERID -ne 0 ]; then
     echo "Error:: run command with root user privilizes"
+    exit 1
 fi
+
+
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
         echo "Error:: command not found"
+        exit 1
     else
         echo -e "$2 Installing $G Success.$N"
     fi

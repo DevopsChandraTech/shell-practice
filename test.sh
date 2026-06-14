@@ -13,15 +13,19 @@ N="\e[0m"
 USERID=$(id -u) # show user id
 
 if [ $USERID -ne 0 ]; then
-    echo "Error:: run command with root user privilizes"
+    echo "Error:: run command with root user privilizes" &>> tee -a $LOG_FILE
     exit 1
 fi
 
+LOG_FOLDER="/var/log/shell-script"
+SCRIPT_NAME=$(echo $0 | awk -F "." '{print $1}')
+LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 
+mkdir -p $LOG_FOLDER
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
-        echo "Error:: command not found"
+        echo "Error:: command not found" &>> $LOG_FILE
         exit 1
     else
         echo -e "$2 Installing $G Success.$N"
@@ -31,10 +35,10 @@ VALIDATE(){
 dnf list installed mysql 
 
 if [ $? -ne 0 ]; then
-    dnf install mysql -y
+    dnf install mysql -y &>> $LOG_FILE
     VALIDATE $? MySql
 else 
-    echo -e "MySql already installed $Y Skipping...!$N"
+    echo -e "MySql already installed $Y Skipping...!$N" &>> tee -a $LOG_FILE
 fi
 
 END_TIME=$(date +%s)

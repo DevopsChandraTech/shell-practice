@@ -37,8 +37,8 @@ VALIDATE(){
 # if not installed install or else install skipping
 
 for package in $@;
+dnf installed $package &>> $LOG_FILE
 do
-    dnf installed $package &>> $LOG_FILE
     if [ $? -ne 0 ]; then
         dnf install $package -y &>> $LOG_FILE
         VALIDATE $? $package

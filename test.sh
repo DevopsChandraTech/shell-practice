@@ -36,7 +36,7 @@ VALIDATE(){
 # check mysql installed or not 
 # if not installed install or else install skipping
 
-for package in $@;
+for package in $@
 do
     dnf installed $package &>> $LOG_FILE
     if [ $? -ne 0 ]; then

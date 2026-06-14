@@ -13,7 +13,7 @@ N="\e[0m"
 USERID=$(id -u) # show user id
 
 if [ $USERID -ne 0 ]; then
-    echo "Error:: run command with root user privilizes" &>> tee -a $LOG_FILE
+    echo "Error:: run command with root user privilizes"
     exit 1
 fi
 

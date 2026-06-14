@@ -41,7 +41,7 @@ do
     dnf installed $package &>> $LOG_FILE
     if [ $? -ne 0 ]; then
         dnf install $package -y &>> $LOG_FILE
-        VALIDATE $? $package
+        VALIDATE $? "$package"
     else
         echo -e "$package already installed...! $Y Skipping. $N"
     fi

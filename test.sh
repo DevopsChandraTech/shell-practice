@@ -43,7 +43,6 @@ do
         dnf install $package -y &>> $LOG_FILE
         VALIDATE $? $package
     else
-        echo -e "$package already installed...! $Y Skipping. $N" | tee -a $LOG_FILE
+        echo -e "$package already installed...! $Y Skipping. $N"
     fi
-
 done

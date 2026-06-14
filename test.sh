@@ -13,7 +13,7 @@ N="\e[0m"
 USERID=$(id -u) # show user id
 
 if [ $USERID -ne 0 ]; then
-    echo "Error:: run command with root user privilizes"
+    echo "Error:: run command with root user privilizes" | tee -a $LOG_FILE
     exit 1
 fi
 
@@ -28,7 +28,7 @@ VALIDATE(){
         echo "Error:: command not found" &>> $LOG_FILE
         exit 1
     else
-        echo -e "$2 Installing $G Success.$N"
+        echo -e "$2 Installing $G Success.$N" | tee -a $LOG_FILE
     fi
 }
 
@@ -38,7 +38,7 @@ if [ $? -ne 0 ]; then
     dnf install mysql -y &>> $LOG_FILE
     VALIDATE $? MySql
 else 
-    echo -e "MySql already installed $Y Skipping...!$N" &>> tee -a $LOG_FILE
+    echo -e "MySql already installed $Y Skipping...!$N"  | tee -a $LOG_FILE
 fi
 
 END_TIME=$(date +%s)

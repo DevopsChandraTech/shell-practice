@@ -37,6 +37,8 @@ fi
 while IFS= read -r filepath 
 do
     echo "deleted file is : $filepath"
+    rm -rf $filepath
+    echo "delete this file:$filepath"
 
 done <<< $FILES_TO_DELETE
 

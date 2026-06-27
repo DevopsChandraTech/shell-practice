@@ -34,12 +34,11 @@ if [ ! -d $SOURCE_DIR ]; then
     exit 1
 fi
 
-while IFS= read -r filepath 
+while IFS= read -r filepath #IFS -> Internal Field Separator
 do
     echo "deleted file is : $filepath"
     rm -rf $filepath
     echo "delete this file:$filepath"
-
 done <<< $FILES_TO_DELETE
 
 
@@ -58,3 +57,19 @@ done <<< $FILES_TO_DELETE
 #     echo "File not found: $file"
 #   fi
 # done < "orphaned_files.txt"   
+
+
+#time count 10 seconds
+
+# # Initialize the counter
+# count=10
+
+# # Loop while count is greater than 0
+# while [ $count -gt 0 ]; do
+#     echo -ne "Countdown: $count seconds\r"
+#     sleep 1
+#     count=$((count - 1))
+# done
+
+# # Print completion message on a new line
+# echo -e "\nTime's up!"   

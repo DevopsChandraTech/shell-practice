@@ -43,7 +43,7 @@ fi
 
 FILES=$(find $SOURCE_DIR -type f -name "*.log" -mtime +14)
 
-if [ ! -z ${FILES} ]; then
+if [ ! -z "${FILES}" ]; then
     echo "files found : $FILES"
 else
     echo "files not found directory empty"

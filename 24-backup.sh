@@ -56,9 +56,9 @@ if [ ! -z "${FILES}" ]; then
         echo -e "Archival is $G SUCCESS $N"
         while IFS= read -r filepath
         do
-            echo "deleting file is : $filepath"
+            echo "Deleting the file: $filepath"
             rm -rf $filepath
-            echo "delete this file:$filepath"
+            echo "Deleted the file: $filepath"
         done <<< $FILES
     else
         echo -e "Archival is $R FAILURE $N"

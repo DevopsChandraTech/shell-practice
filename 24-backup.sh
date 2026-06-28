@@ -42,14 +42,14 @@ if [ ! -d $DEST_DIR ]; then
     exit 1
 fi
 
-FILES=$(find $SOURCE_DIR -type f -name "*.log" -mtime +14 $DAYS)
+FILES=$(find $SOURCE_DIR -type f -name "*.log" -mtime +$DAYS)
 
 if [ ! -z "${FILES}" ]; then
     echo "files found : $FILES"
     TIMESTAMP=$(date +%F-%H-%M)
     ZIP_FILE_NAME=/$DEST_DIR/app-logs-$TIMESTAMP
     echo "zip file name is : $ZIP_FILE_NAME"
-    find $SOURCE_DIR -type f -name "*.log" -mtime +14 +$DAYS | zip -@ -j $ZIP_FILE_NAME 
+    find $SOURCE_DIR -type f -name "*.log" -mtime +$DAYS | zip -@ -j $ZIP_FILE_NAME 
 
     if [ -f $ZIP_FILE_NAME ]; then
         echo -e "Archival is $G SUCCESS $N"

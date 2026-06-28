@@ -4,6 +4,8 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+SOURCE_DIR=$1
+DEST_DIR=$2
 
 START_TIME=$(date +%s)
 
@@ -17,8 +19,8 @@ fi
 LOGS_FOLDER="/var/log/shell-script"
 SCRIPT_NAME=$(echo $0 | awk -F "." '{print $1}') # (or echo $0 | cut -d '.' -f1)
 FILE_NAME="/$LOGS_FOLDER/$SCRIPT_NAME.log"
-SOURCE_DIR=/home/ec2-user/app-logs
 mkdir -p $LOGS_FOLDER
+
 
 USAGE(){
     echo -e "$R sh 24-backup.sh <source-dir> <dest-dir> <days [optional,default 14 days]> $N"
@@ -28,4 +30,21 @@ USAGE(){
 if [ $# -le 2 ]; then
     USAGE
 fi
+
+if [ -d $SOURCE_DIR ]; then
+    echo "Error:: Source $SOURCE_DIR Doesnot exist..!"
+fi
+
+if [ -d $DEST_DIR ]; then
+    echo "Error:: Source $DEST_DIR Doesnot exist..!"
+fi
+
+FILES=$(find $SOURCE_DIR -type f -name "*.log" -mtime +14)
+
+if [ ! -z $SOURCE_DIR ]; then
+    echo "files found : $FILES"
+else
+    echo "files not found directory empty"
+fi
+
 

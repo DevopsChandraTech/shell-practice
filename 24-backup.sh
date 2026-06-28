@@ -32,12 +32,12 @@ if [ $# -lt 2 ]; then
     USAGE
 fi
 
-if [ ! -d $SOURCE_DIR ]; then
+if [ ! -d $SOURCE_DIR ]; then #SOURCE_DIR=/home/ec2-user/source-dir
     echo "Error:: Source $SOURCE_DIR Does not exist..!"
     exit 1
 fi
 
-if [ ! -d $DEST_DIR ]; then
+if [ ! -d $DEST_DIR ]; then #DEST_DIR=/home/ec2-user/dest-dir
     echo "Error:: Destination $DEST_DIR Does not exist..!"
     exit 1
 fi
@@ -49,7 +49,7 @@ if [ ! -z "${FILES}" ]; then
     TIMESTAMP=$(date +%F-%H-%M)
     ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIMESTAMP"
     echo "zip file name is : $ZIP_FILE_NAME"
-    find $SOURCE_DIR -type f -name "*.log" -mtime +$DAYS | zip -@ -j "$ZIP_FILE_NAME" 
+    find $SOURCE_DIR -type f -name "*.log" -mtime +$DAYS | zip -@ -j "$ZIP_FILE_NAME"
 
     if [ -f $ZIP_FILE_NAME ]
     then
@@ -57,11 +57,10 @@ if [ ! -z "${FILES}" ]; then
 
         while IFS= read -r filepath #IFS -> Internal Field Separator
         do
-            echo "deleted file is : $filepath"
+            echo "deleting file is : $filepath"
             rm -rf $filepath
             echo "delete this file:$filepath"
         done <<< $FILES
-
     else
         echo -e "Archival is $R FAILURE $N"
         exit 1

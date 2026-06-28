@@ -53,9 +53,7 @@ if [ ! -z "${FILES}" ]; then
 
     if [ -f $ZIP_FILE_NAME ]
     then
-        echo -e "Archeival ... $G SUCCESS $N"
-
-        ### Delete if success ###
+        echo -e "Archival is $G SUCCESS $N"
         while IFS= read -r filepath
         do
             echo "Deleting the file: $filepath"
@@ -63,11 +61,12 @@ if [ ! -z "${FILES}" ]; then
             echo "Deleted the file: $filepath"
         done <<< $FILES
     else
-        echo "Archieval ... $R FAILURE $N"
+        echo -e "Archival is $R FAILURE $N"
         exit 1
     fi
+
 else
-    echo -e "No files to archeive ... $Y SKIPPING $N"
+    echo "files not found directory empty"
 fi
 
 

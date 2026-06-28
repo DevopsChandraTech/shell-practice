@@ -51,7 +51,8 @@ if [ ! -z "${FILES}" ]; then
     echo "zip file name is : $ZIP_FILE_NAME"
     find $SOURCE_DIR -type f -name "*.log" -mtime +$DAYS | zip -@ -j $ZIP_FILE_NAME 
 
-    if [ -f $ZIP_FILE_NAME ]; then
+    if [ -f $ZIP_FILE_NAME ]
+    then
         echo -e "Archival is $G SUCCESS $N"
         while IFS= read -r filepath #IFS -> Internal Field Separator
         do
@@ -62,6 +63,7 @@ if [ ! -z "${FILES}" ]; then
 
     else
         echo -e "Archival is $R FAILURE $N"
+        exit 1
     fi
 
 else

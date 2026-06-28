@@ -23,7 +23,7 @@ mkdir -p $LOGS_FOLDER
 
 
 USAGE(){
-    echo -e "$R sh 24-backup.sh <source-dir> <dest-dir> <days [optional,default 14 days]> $N"
+    echo -e "$R sudo sh 24-backup.sh <source-dir> <dest-dir> <days [optional,default 14 days]> $N"
     exit 1
 }
     

@@ -33,10 +33,12 @@ fi
 
 if [ ! -d $SOURCE_DIR ]; then
     echo "Error:: Source $SOURCE_DIR Does not exist..!"
+    exit 1
 fi
 
 if [ ! -d $DEST_DIR ]; then
     echo "Error:: Destination $DEST_DIR Does not exist..!"
+    exit 1
 fi
 
 FILES=$(find $SOURCE_DIR -type f -name "*.log" -mtime +14)

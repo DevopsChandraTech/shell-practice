@@ -54,8 +54,7 @@ if [ ! -z "${FILES}" ]; then
     if [ -f $ZIP_FILE_NAME ]
     then
         echo -e "Archival is $G SUCCESS $N"
-
-        while IFS= read -r filepath #IFS -> Internal Field Separator
+        while IFS= read -r filepath
         do
             echo "deleting file is : $filepath"
             rm -rf $filepath

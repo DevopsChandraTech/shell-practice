@@ -45,6 +45,24 @@ FILES=$(find $SOURCE_DIR -type f -name "*.log" -mtime +14)
 
 if [ ! -z "${FILES}" ]; then
     echo "files found : $FILES"
+    TIMESTAMP=$(date +%F-%H-%M)
+    ZIP_FILE_NAME=/$DEST_DIR/app-logs-$TIMESTAMP
+    echo "zip file name is : $ZIP_FILE_NAME"
+    find $SOURCE_DIR -type f -name "*.log" -mtime +14 | zip -@ -j $ZIP_FILE_NAME
+
+    if [ -f $ZIP_FILE_NAME ]; then
+        echo -e "Archival is $G SUCCESS $N"
+        while IFS= read -r filepath #IFS -> Internal Field Separator
+        do
+            echo "deleted file is : $filepath"
+            rm -rf $filepath
+            echo "delete this file:$filepath"
+        done <<< $FILES
+
+    else
+        echo -e "Archival is $R FAILURE $N"
+    fi
+
 else
     echo "files not found directory empty"
 fi

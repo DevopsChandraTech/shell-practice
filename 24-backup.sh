@@ -42,18 +42,20 @@ if [ ! -d $DEST_DIR ]; then #DEST_DIR=/home/ec2-user/dest-dir
     exit 1
 fi
 
-FILES=$(find $SOURCE_DIR -type f -name "*.log" -mtime +$DAYS)
+FILES=$(find $SOURCE_DIR -name "*.log" -name "*.log" -mtime +$DAYS)
 
 if [ ! -z "${FILES}" ]; then
     echo "files found : $FILES"
     TIMESTAMP=$(date +%F-%H-%M)
     ZIP_FILE_NAME="$DEST_DIR/app-logs-$TIMESTAMP.zip"
     echo "zip file name is : $ZIP_FILE_NAME"
-    find $SOURCE_DIR -type f -name "*.log" -mtime +$DAYS | zip -@ -j "$ZIP_FILE_NAME"
+    find $SOURCE_DIR -name "*.log" -type f -mtime +$DAYS | zip -@ -j "$ZIP_FILE_NAME"
 
     if [ -f $ZIP_FILE_NAME ]
     then
-        echo -e "Archival is $G SUCCESS $N"
+        echo -e "Archeival ... $G SUCCESS $N"
+
+        ### Delete if success ###
         while IFS= read -r filepath
         do
             echo "Deleting the file: $filepath"
@@ -61,12 +63,11 @@ if [ ! -z "${FILES}" ]; then
             echo "Deleted the file: $filepath"
         done <<< $FILES
     else
-        echo -e "Archival is $R FAILURE $N"
+        echo "Archieval ... $R FAILURE $N"
         exit 1
     fi
-
 else
-    echo "files not found directory empty"
+    echo -e "No files to archeive ... $Y SKIPPING $N"
 fi
 
 
